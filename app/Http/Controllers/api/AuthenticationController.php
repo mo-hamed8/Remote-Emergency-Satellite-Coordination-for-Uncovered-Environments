@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
@@ -53,5 +54,15 @@ class AuthenticationController extends Controller
 
             ]);
 
+    }
+
+    public function logout(Request $request){
+        Auth::user()->tokens()->delete();
+        return response()->json([
+                "success"=> true,
+                "message"=> "logged out successfully.",
+                "data"=>[]
+
+            ]);
     }
 }
