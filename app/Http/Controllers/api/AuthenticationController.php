@@ -27,4 +27,31 @@ class AuthenticationController extends Controller
 
     }
 
+    public function login(Request $request){
+        $request->validate([
+            "email"=>"required|email",
+            "password"=>"required"
+        ]);
+        $user=User::where("email",$request->email)->first();
+        if(Hash::check($request->password, $user->password)){
+            $token=$user->createToken("auth-token")->plainTextToken;
+            return response()->json([
+                "success"=> true,
+                "message"=> "login successful",
+                "data"=>[
+                    "user"=>UserResource::make($user),
+                    "token"=>$token
+                ]
+
+            ]);
+        }
+
+        return response()->json([
+                "success"=> false,
+                "message"=> "login failed. invalid email or password.",
+                "data"=>[]
+
+            ]);
+
+    }
 }
