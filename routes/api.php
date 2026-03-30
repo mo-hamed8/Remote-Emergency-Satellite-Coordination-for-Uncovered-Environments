@@ -19,3 +19,4 @@ Route::get("search-case",[SearchCaseController::class,"index"]);
 Route::post("search-case",[SearchCaseController::class,"store"])->middleware('auth:sanctum');
 
 Route::get("SearchImage",[SearchImageController::class,"index"])->middleware('auth:sanctum');
+Route::post("imageAnalyses",[SearchImageController::class,"analyse"])->middleware('auth:sanctum');

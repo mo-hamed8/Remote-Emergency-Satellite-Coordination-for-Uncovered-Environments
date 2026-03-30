@@ -9,6 +9,7 @@ class ImageAnalysis extends Model
 {
     //
     protected $guarded = [];
+    protected $table = 'image_analysis';
 
     public function satelliteImage():BelongsTo{
         return $this->belongsTo(SateliteImage::class);
