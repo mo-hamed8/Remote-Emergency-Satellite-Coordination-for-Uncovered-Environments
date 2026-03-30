@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function searchCase():HasMany{
         return $this->hasMany(SearchCase::class,"created_by");
     }
+
+    public function analysis():HasMany{
+        return $this->hasMany(ImageAnalysis::class);
+    }
 }
