@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class ExpectedLocation extends Model
 {
     //
+    protected $guarded = [];
 }

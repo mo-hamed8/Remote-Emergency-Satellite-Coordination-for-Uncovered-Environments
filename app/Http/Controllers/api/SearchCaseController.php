@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SearchCaseResource;
+use App\Models\ExpectedLocation;
 use App\Models\SearchCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,12 +31,19 @@ class SearchCaseController extends Controller
 
         $request->validate([
             "title"=>"required|string",
-            "description"=>"required|string"
+            "description"=>"required|string",
+            "point"=>"required"
         ]);
 
         $searchCase=$user->searchCase()->create([
             "title"=>$request->title,
             "description"=>$request->description,
+        ]);
+
+        ExpectedLocation::create([
+            "coordinates"=>$request->point,
+            "added_by"=>$user->id,
+            "search_case_id"=>$searchCase->id
         ]);
 
         return response()->json([
