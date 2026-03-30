@@ -16,3 +16,5 @@ Route::post("logout",[AuthenticationController::class,"logout"])->middleware('au
 
 Route::get("search-case",[SearchCaseController::class,"index"]);
 Route::post("search-case",[SearchCaseController::class,"store"])->middleware('auth:sanctum');
+
+
