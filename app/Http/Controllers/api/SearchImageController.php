@@ -83,7 +83,8 @@ class SearchImageController extends Controller
         return $imgs;
     }
 
-    public function closeSuspicion(Request $request){
+    public function closeSuspicion(Request $request)
+    {
         $request->validate([
         'analysis_id' => 'required|exists:image_analysis,id',
         'status' => 'required|in:confirmed,rejected'
