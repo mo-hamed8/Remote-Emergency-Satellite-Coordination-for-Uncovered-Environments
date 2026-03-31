@@ -24,6 +24,7 @@ class SearchImageController extends Controller
             })
             ->whereNull('image_analysis.id')
             ->select('satelite_images.*')
+            ->limit(10)
             ->get();
 
         return $images;
