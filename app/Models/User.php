@@ -54,6 +54,6 @@ class User extends Authenticatable
     }
 
     public function analysis():HasMany{
-        return $this->hasMany(ImageAnalysis::class);
+        return $this->hasMany(ImageAnalysis::class,'analyzed_by');
     }
 }

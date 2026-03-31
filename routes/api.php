@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\AuthenticationController;
 use App\Http\Controllers\Api\SearchCaseController;
 use App\Http\Controllers\api\SearchImageController;
+use App\Http\Controllers\api\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::post("search-case",[SearchCaseController::class,"store"])->middleware('au
 
 Route::get("SearchImage",[SearchImageController::class,"index"])->middleware('auth:sanctum');
 Route::post("imageAnalyses",[SearchImageController::class,"analyse"])->middleware('auth:sanctum');
+
+Route::get("profile",[ProfileController::class,"index"])->middleware('auth:sanctum');
