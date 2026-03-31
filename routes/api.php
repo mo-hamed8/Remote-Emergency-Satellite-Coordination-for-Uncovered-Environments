@@ -25,3 +25,4 @@ Route::post("imageAnalyses",[SearchImageController::class,"analyse"])->middlewar
 Route::get("profile",[ProfileController::class,"index"])->middleware('auth:sanctum');
 
 Route::get("suspectedImages",[SearchImageController::class,"suspectedImages"])->middleware('auth:sanctum');
+Route::post("closeSuspicion",[SearchImageController::class,"closeSuspicion"])->middleware('auth:sanctum');
