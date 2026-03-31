@@ -23,3 +23,5 @@ Route::get("SearchImage",[SearchImageController::class,"index"])->middleware('au
 Route::post("imageAnalyses",[SearchImageController::class,"analyse"])->middleware('auth:sanctum');
 
 Route::get("profile",[ProfileController::class,"index"])->middleware('auth:sanctum');
+
+Route::get("suspectedImages",[SearchImageController::class,"suspectedImages"])->middleware('auth:sanctum');

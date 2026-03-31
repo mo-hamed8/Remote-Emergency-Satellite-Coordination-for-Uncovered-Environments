@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\ImageAnalysis;
+use App\Models\SateliteImage;
+use App\Models\SearchCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,4 +55,21 @@ class SearchImageController extends Controller
             "data"    => []
         ], 201);
     }
+
+    public function suspectedImages(Request $request)
+    {
+        $request->validate(["search_case_id" => "required"]);
+
+        $imgs = SateliteImage::where('search_case_id', $request->search_case_id)
+            ->whereHas('analysis', function ($query) {
+                $query->whereNotNull('point')
+                    ->where('status', 'pending');
+            })
+            ->get();
+
+        return $imgs;
+    }
+
+    
+
 }
