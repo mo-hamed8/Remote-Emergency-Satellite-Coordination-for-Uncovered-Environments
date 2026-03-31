@@ -16,13 +16,15 @@ class AuthenticationController extends Controller
         $request->validate([
             "name"=>"required|string|max:255",
             "email"=>"required|email|unique:users,email",
-            "password"=>"required|confirmed"
+            "password"=>"required|confirmed",
+            "phone" => "nullable|string|max:20"
         ]);
 
         $user=User::create([
             "name"=>$request->name,
             "email"=>$request->email,
-            "password"=>Hash::make($request->password)
+            "password"=>Hash::make($request->password),
+            "phone"=>$request->phone
         ]);
         return response()->json(UserResource::make($user),201);
 
@@ -33,7 +35,17 @@ class AuthenticationController extends Controller
             "email"=>"required|email",
             "password"=>"required"
         ]);
+
         $user=User::where("email",$request->email)->first();
+        if (!$user) {
+        return response()->json([
+            "success"=> false,
+            "message"=> "Invalid email or password.",
+            "data"=>[]
+        ],401);
+    }
+
+
         if(Hash::check($request->password, $user->password)){
             $token=$user->createToken("auth-token")->plainTextToken;
             return response()->json([
