@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\AuthenticationController;
-use App\Http\Controllers\Api\SearchCaseController;
+use App\Http\Controllers\api\SearchCaseController;
 use App\Http\Controllers\api\SearchImageController;
 use App\Http\Controllers\api\ProfileController;
 use Illuminate\Http\Request;
