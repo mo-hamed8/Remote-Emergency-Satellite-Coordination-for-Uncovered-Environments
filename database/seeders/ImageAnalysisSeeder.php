@@ -9,6 +9,7 @@ use App\Models\User;
 
 class ImageAnalysisSeeder extends Seeder
 {
+    
     public function run(): void
     {
         $user = User::first();
@@ -20,10 +21,8 @@ class ImageAnalysisSeeder extends Seeder
                 'image_id' => $image->id,
                 'analyzed_by' => $user->id,
 
-                // نقطة ملاحظة داخل الصورة (تقدري تغيرها لاحقًا لنظام إحداثيات)
                 'point' => 'X:' . rand(10, 90) . ', Y:' . rand(10, 90),
 
-                // وصف واقعي
                 'description' => fake()->randomElement([
                     'يُحتمل وجود آثار أقدام بشرية في المنطقة المحددة.',
                     'تم رصد مسار مركبة باتجاه الجنوب الشرقي.',
@@ -32,7 +31,6 @@ class ImageAnalysisSeeder extends Seeder
                     'آثار إطارات تبدو حديثة نسبياً.',
                 ]),
 
-                // حالات مختلفة للتحليل
                 'status' => fake()->randomElement([
                     'pending',
                     'reviewed',

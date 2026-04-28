@@ -12,9 +12,9 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+    
     public function run(): void
     {
-        // مستخدم Admin
         User::create([
             'name' => 'Admin',
             'email' => 'admin@hotel.com',

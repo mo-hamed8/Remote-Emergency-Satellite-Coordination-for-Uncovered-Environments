@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SearchImageController extends Controller
 {
+    
     public function index(Request $request)
     {
         $user = Auth::user();

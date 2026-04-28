@@ -8,6 +8,7 @@ use App\Models\User;
 
 class SearchCaseSeeder extends Seeder
 {
+    
     public function run(): void
     {
         $user = User::first();
