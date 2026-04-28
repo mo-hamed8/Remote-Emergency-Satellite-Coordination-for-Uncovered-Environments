@@ -69,15 +69,16 @@ class SearchImageController extends Controller
                 $query->whereNotNull('point')
                     ->where('status', 'pending');
             })
-            ->with(['analysis:id,image_id'])
+            ->with(['analysis:id,image_id,point'])
             ->get()
             ->map(function ($image) {
                 return [
                     'id' => $image->id,
                     'search_case_id' => $image->search_case_id,
                     'filename' => $image->filename,
-                    'path' => $image->path,
+                    'path' => Storage::url($image->path),
                     "size" => $image->size,
+                    'point' => $image->analysis->first()?->point,
                     "created_at" => $image->created_at,
                     "updated_at" => $image->updated_at,
                     'analysis_id' => $image->analysis->first()?->id,
