@@ -10,9 +10,10 @@ class SatelliteImageSeeder extends Seeder
 {
     public function run(): void
     {
-        
+
         $cases = SearchCase::all();
 
+        
         if ($cases->isEmpty()) {
             return;
         }

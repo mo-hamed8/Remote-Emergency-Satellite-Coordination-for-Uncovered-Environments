@@ -9,12 +9,13 @@ use App\Models\User;
 
 class ImageAnalysisSeeder extends Seeder
 {
-    
+
     public function run(): void
     {
         $user = User::first();
         $images = SateliteImage::all();
 
+        
         foreach ($images as $image) {
 
             ImageAnalysis::create([

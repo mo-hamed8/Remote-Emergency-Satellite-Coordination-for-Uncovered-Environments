@@ -8,7 +8,7 @@ use App\Models\User;
 
 class SearchCaseSeeder extends Seeder
 {
-    
+
     public function run(): void
     {
         $user = User::first();
@@ -41,6 +41,7 @@ class SearchCaseSeeder extends Seeder
             'created_by' => $user->id,
         ]);
 
+        
         SearchCase::create([
             'title' => 'مفقود قرب محمية عروق بني معارض',
             'description' => 'تم الإبلاغ عن فقدان شخص أثناء رحلة استكشافية بالقرب من المحمية، والبحث لا يزال جارياً.',
