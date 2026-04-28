@@ -9,6 +9,7 @@ use App\Models\SearchCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SearchImageController extends Controller
 {
@@ -27,7 +28,10 @@ class SearchImageController extends Controller
             ->whereNull('image_analysis.id')
             ->select('satelite_images.*')
             ->limit(10)
-            ->get();
+            ->get()->map(function ($image) {
+            $image->image_url = Storage::url($image->path);
+            return $image;
+        });
 
         return $images;
     }
