@@ -4,6 +4,7 @@ use App\Http\Controllers\api\AuthenticationController;
 use App\Http\Controllers\api\SearchCaseController;
 use App\Http\Controllers\api\SearchImageController;
 use App\Http\Controllers\api\ProfileController;
+use App\Http\Controllers\api\ServiceProviderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,6 @@ Route::get("findUser",[ProfileController::class,"findUser"])->middleware('auth:s
 
 Route::get("suspectedImages",[SearchImageController::class,"suspectedImages"])->middleware('auth:sanctum');
 Route::post("closeSuspicion",[SearchImageController::class,"closeSuspicion"])->middleware('auth:sanctum');
+
+
+Route::apiResource("serviceProviders",ServiceProviderController::class);
