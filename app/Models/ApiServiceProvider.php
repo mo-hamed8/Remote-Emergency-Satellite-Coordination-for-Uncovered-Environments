@@ -16,4 +16,9 @@ class ApiServiceProvider extends Model
         'rate_limit',
         'description',
     ];
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, 'service_provider_id');
+    }
 }

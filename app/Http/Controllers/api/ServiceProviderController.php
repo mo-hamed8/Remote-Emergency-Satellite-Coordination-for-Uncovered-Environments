@@ -12,7 +12,7 @@ class ServiceProviderController extends Controller
 
     public function index()
     {
-        $providers = ApiServiceProvider::get();
+        $providers = ApiServiceProvider::with("wallet")->get();
 
         return response()->json([
             'success' => true,
@@ -34,6 +34,8 @@ class ServiceProviderController extends Controller
         ]);
 
         $provider = ApiServiceProvider::create($validated);
+
+        $provider->wallet()->create();
 
         return response()->json([
             'success' => true,
