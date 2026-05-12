@@ -5,6 +5,7 @@ use App\Http\Controllers\api\SearchCaseController;
 use App\Http\Controllers\api\SearchImageController;
 use App\Http\Controllers\api\ProfileController;
 use App\Http\Controllers\api\ServiceProviderController;
+use App\Http\Controllers\WalletTransactionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,5 @@ Route::post("closeSuspicion",[SearchImageController::class,"closeSuspicion"])->m
 
 
 Route::apiResource("serviceProviders",ServiceProviderController::class);
+
+Route::get('/wallet/{id}/transactions', [WalletTransactionsController::class, 'walletTransaction']);
