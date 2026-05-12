@@ -14,4 +14,9 @@ class Wallet extends Model
     {
         return $this->belongsTo(ApiServiceProvider::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(WalletTransaction::class);
+    }
 }
