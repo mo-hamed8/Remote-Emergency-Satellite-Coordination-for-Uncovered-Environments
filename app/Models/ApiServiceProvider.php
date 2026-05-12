@@ -21,4 +21,9 @@ class ApiServiceProvider extends Model
     {
         return $this->hasOne(Wallet::class, 'service_provider_id');
     }
+
+    public function logs()
+    {
+        return $this->hasMany(ProviderLog::class);
+    }
 }
